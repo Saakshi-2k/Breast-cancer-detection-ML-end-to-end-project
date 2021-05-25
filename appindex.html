@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- This is GUI for Breast Cancer Detection Application Using Machine Learning Classifier -->
+
+<html>
+    <head>
+        <title>Breast Cancer Detection</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            h2{
+                font-size: 1cm;
+                text-transform: uppercase;   
+            } 
+            body{
+                height: auto;
+                background-image: linear-gradient(27deg, #ff66b3 ,#ff80ff, #ff6666,#ff80df,#ff4d4d );
+                font-family: sans-serif;
+           }
+            
+            .container{
+                position: relative;
+                height: 90vh;
+                margin:0px;
+                padding: 0px;
+            }
+            .child{
+                width: 95vw;
+                height: auto;
+                margin: auto;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            
+             section{
+                display: flex;
+                align-items: center;
+                justify-content:flex-start;
+                flex-direction: column;
+                
+            }
+            .box{
+                position: relative;
+                max-width: 400px;
+                padding: 30px;
+                margin-bottom: 10px;
+                background:rgba(255,255,255,.2);
+                box-shadow: 0 0 0 1px;
+                border-radius: 20px;
+                border-color: white;
+                overflow-y: scroll; 
+                min-height: -webkit-fill-available;
+                
+            }
+            .btn{
+                outline: black;
+                display: block;
+                border: solid 1px black;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 1;
+                padding: 20px 40px;
+                border-radius: 30px;
+                background: #ffffff;
+                color: deeppink;
+                cursor: pointer;
+                transition: all 0.3s linear;
+    }
+    
+                .btn:focus,
+                .btn:hover{
+                    background: #5CED29;
+                }
+                
+                .button_cont{
+                    margin: 15px;
+                }
+           
+            .header{
+               height: auto;
+               position: relative;
+               flex: 1 1 400px;
+               margin: 40px;
+               
+            }
+            
+            .leftside{
+               height: auto; 
+               width: 50%;
+               float: left;
+               flex: 1 1 400px;
+               margin: 20px;
+            }
+            
+            .rightside{
+                height: 500px;
+                width: 50%;
+                float: right;
+                flex: 1 1 400px;
+                margin: 20px;
+            }
+            
+            .res{
+                margin: 20px;
+                background: rgba(255,255,255,.1);
+                color: #4AED29;
+            }
+           
+            input{
+                width: 100%;
+                border: 2px solid;
+                border-radius: 5px;
+                margin: 10px 0;
+                box-shadow: 0 0 4px white;
+                outline: none;
+                font-size: 15px;
+                font-weight: 500;
+                padding: 10px;
+                box-sizing: border-box;
+                transition: box-shadow 0.5s ease;
+                background: transparent;
+                color: white;
+            }
+            
+            input:focus{
+                border-color: aquamarine;
+                box-shadow: 0 0 8px 0 aquamarine;
+            }
+            
+            .footer{
+                position: fixed;
+                width: 100%;
+                height: 2rem;
+                margin-bottom: 0px;
+                background-color: #0a183d;
+                margin-top: auto;
+            }
+            .footer p{
+                color: white;
+                font-size: 1rem;
+                text-align: center;
+                text-transform: capitalize;
+                line-height: 2rem;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="header">
+                <h2 align="center">Breast Cancer Early Detection</h2>
+            </div>
+            
+            <div class="child">
+                <section class="leftside">
+                <h1>
+                    this is just for checking.how is it looking till what length is go.
+                </h1>
+                <p>A cancer that forms in the cells of the breasts.
+                    Breast cancer can occur in women and rarely in men.
+                    Symptoms of breast cancer include a lump in the breast, 
+                    bloody discharge from the nipple and changes in the shape o
+                    r texture of the nipple or breast.
+                    Its treatment depends on the stage of cancer. 
+                    It may consist of chemotherapy, radiation, hormone therapy and surgery.
+                </p>
+                <div class="res">
+                    <center>
+                        <h3>{{ prediction_text }}</h3>
+                    </center>
+                </div>
+
+                </section>
+            
+                <section class="rightside">
+                    <div class="box">
+                        <h3>Enter the all the required fields</h3>
+                        <form class="login-form">
+                                <input type="text" name="mean_radius" placeholder="mean radius" required="required" />
+                                <input type="text" name="mean_texture" placeholder="mean texture" required="required" />
+                                <input type="text" name="mean_perimeter" placeholder="mean perimeter" required="required" />
+                                <input type="text" name="mean_area" placeholder="mean area" required="required" />
+                                <input type="text" name="mean_smoothness" placeholder="mean smoothness" required="required" />
+                                <input type="text" name="mean_compactness" placeholder="mean compactness" required="required" />
+                                <input type="text" name="mean_concavity" placeholder="mean concavity" required="required" />
+                                <input type="text" name="mean_concave_points" placeholder="mean concave points" required="required" />
+                                <input type="text" name="mean_symmetry" placeholder="mean symmetry" required="required" />
+                                <input type="text" name="mean_fractal_dimension" placeholder="mean fractal dimension" required="required" />  
+                                <input type="text" name="radius_error" placeholder="radius error" required="required" />
+                                <input type="text" name="texture_error" placeholder="texture error" required="required" />
+                                <input type="text" name="perimeter_error" placeholder="perimeter error" required="required" />
+                                <input type="text" name="area_error" placeholder="area error " required="required" />
+                                <input type="text" name="smoothness_error" placeholder="smoothness error" required="required" />
+                                <input type="text" name="compactness_error" placeholder="compactness error" required="required" />
+                                <input type="text" name="concavity_error" placeholder="concavity error" required="required" />
+                                <input type="text" name="concave_points_error" placeholder="concave points error" required="required" />
+                                <input type="text" name="symmetry_error" placeholder="symmetry error" required="required" />
+                                <input type="text" name="fractal_dimension_error" placeholder="fractal dimension error" required="required" />
+                                <input type="text" name="worst_radius" placeholder="worst radius" required="required" />
+                                <input type="text" name="worst_texture" placeholder="worst texture" required="required" />
+                                <input type="text" name="worst_perimeter" placeholder="worst perimeter" required="required" />
+                                <input type="text" name="worst_area" placeholder="worst area" required="required" />
+                                <input type="text" name="worst_smoothness" placeholder="worst smoothness" required="required" />
+                                <input type="text" name="worst_compactness" placeholder="worst compactness" required="required" />
+                                <input type="text" name="worst_concavity" placeholder="worst concavity" required="required" />
+                                <input type="text" name="worst_concave_points" placeholder="worst concave points" required="required" />
+                                <input type="text" name="worst_symmetry" placeholder="'worst symmetry" required="required" />
+                                <input type="text" name="worst_fractal_dimension" placeholder="worst fractal dimension" required="required" />              
+
+                        </form>
+                    </div>
+
+                    <div class="button_cont" align="center">
+                        <button type="submit" class="btn"><strong>Predict Results</strong></button>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer class="footer">
+                <p>Issued in public interest</p>
+        </footer>
+    </body>
+</html>
