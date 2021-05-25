@@ -29,12 +29,12 @@ def predict():
     output = model.predict(df)
         
     if output == 0:
-        res_val = "Breast Cancer Detected"
+        res_val = "Breast Cancer."
     else:
-        res_val = "No Breast Cancer Deteced"
+        res_val = "No Breast Cancer."
         
 
-    return render_template('index.html', prediction_text='Patient has {}'.format(res_val))
+    return render_template('appindex.html', prediction_text='Patient has {}'.format(res_val))
 
 if __name__ == "__main__":
     app.run()
